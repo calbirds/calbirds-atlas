@@ -2,7 +2,7 @@
   "name": "calbirds-atlas",
   "private": true,
   "scripts": {
-    "dev": "wrangler pages dev . --port 7711"
+    "dev": "wrangler pages dev public --port 7711"
   },
   "devDependencies": {
     "wrangler": "^4.76.0"

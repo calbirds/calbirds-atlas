@@ -1,5 +1,5 @@
 name = "calbirds-atlas"
-pages_build_output_dir = "."
+pages_build_output_dir = "public"
 compatibility_date = "2026-01-01"
 
 # KV namespace for pre-computed zero-effort block data (stale-while-revalidate)
