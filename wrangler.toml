@@ -7,4 +7,4 @@ compatibility_date = "2026-01-01"
 # Then replace the id below with the output namespace ID.
 [[kv_namespaces]]
 binding = "ATLAS_KV"
-id = "1039e25f87d74efc94d5b3c3cc6456f7"
+id = "afa01e7202964bccaf0234b3dfa33246"
