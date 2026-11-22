@@ -814,6 +814,7 @@
     .leaflet-control-zoom-in { border-radius: 6px 6px 0 0 !important; }
     .leaflet-control-zoom-out { border-radius: 0 0 6px 6px !important; }
 
+.leaflet-control-attribution .attr-sources{display:inline-block;max-width:14rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom}.leaflet-control-attribution:hover .attr-sources,.leaflet-control-attribution:focus-within .attr-sources{max-width:none;white-space:normal}
     .leaflet-control-attribution {
       font-size: 0.55rem !important;
       background: rgba(255,255,255,0.7) !important;
@@ -1793,15 +1794,15 @@
   const basemaps = {
     osm: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '© <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors',
     }),
     'esri-topo': L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-      { maxZoom: 19, attribution: '© Esri' }
+      { maxZoom: 19, attribution: 'Powered by <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a> <span class="attr-sources">&mdash; Sources: Esri, HERE, Garmin, Intermap, increment P Corp., GEBCO, USGS, FAO, NPS, NRCAN, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), &copy; OpenStreetMap contributors, and the GIS User Community</span>' }
     ),
     'esri-sat': L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      { maxZoom: 19, attribution: '© Esri' }
+      { maxZoom: 19, attribution: 'Powered by <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri</a> <span class="attr-sources">&mdash; Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community</span>' }
     ),
   };
 
@@ -3023,9 +3024,7 @@
           if (profile.includeBasemap) {
             // Cache whichever basemap is currently selected — that's the one
             // the user will see when they go offline.
-            if (currentBase === 'osm') {
-              urls.add(`https://tile.openstreetmap.org/${z}/${x}/${y}.png`);
-            } else if (currentBase === 'esri-topo') {
+            if (currentBase === 'esri-topo') {
               urls.add(`https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}`);
             } else if (currentBase === 'esri-sat') {
               urls.add(`https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}`);
@@ -3069,7 +3068,9 @@
     if (urls.length === 0) { setFieldStatus('Nothing to cache for this area.', false); return; }
     prefetchInFlight = true;
     updateFieldModeUI();
-    setFieldStatus(`Caching… 0/${urls.length}`);
+    setFieldStatus(profile.includeBasemap && currentBase === 'osm'
+      ? `Caching… 0/${urls.length} (Street map tiles can't be saved offline under OpenStreetMap's rules; switch to Topo or Satellite to save the base map)`
+      : `Caching… 0/${urls.length}`);
     postToSW({ type: 'prefetch', urls, concurrency: 4 });
   }
 
