@@ -4,7 +4,7 @@ A mobile-optimised web app for field use during the [California Breeding Bird At
 
 **Live app:** [atlas.calbirds.org](https://atlas.calbirds.org) (also available at [calbirds-atlas.pages.dev](https://calbirds-atlas.pages.dev))
 
-See more projects at [hydrospheric0.github.io](https://hydrospheric0.github.io/).
+See more birding tools at [calbirds.org](https://calbirds.org/).
 
 ---
 
@@ -24,6 +24,8 @@ See more projects at [hydrospheric0.github.io](https://hydrospheric0.github.io/)
 
 ## Support
 
-If you find this useful, consider buying me a coffee!
+If you find this tool useful, please consider supporting its development:
 
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/hydrospheric0)
+<a href="https://buymeacoffee.com/bartg">
+	<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" width="180" />
+</a>
